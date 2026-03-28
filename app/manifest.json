@@ -1,0 +1,21 @@
+{
+  "name": "Oneday",
+  "short_name": "Oneday",
+  "description": "Hold one day at a time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ef",
+  "theme_color": "#f5f3ef",
+  "icons": [
+    {
+      "src": "/oneday_icon_1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/oneday_icon_180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
