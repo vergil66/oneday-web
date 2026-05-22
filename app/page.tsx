@@ -929,12 +929,19 @@ export default function OnedayWebPrototype() {
                   alt="Vergil’s Coffee Table logo"
                   className="h-10 w-auto"
                 />
+    
                 <div className="text-sm font-medium text-stone-700">
                   Powered by Vergil’s Coffee Table
                 </div>
+    
                 <div className="text-xs uppercase tracking-[0.18em] text-stone-500">
                   A Framework for Intentional Learning
                 </div>
+    
+                <div className="text-xs text-stone-400">
+                  Oneday v0.8 · Keep • Grow • Tend
+                </div>
+    
                 <a
                   href="https://apps.vergilscoffeetable.com"
                   className="text-sm text-stone-600 underline-offset-4 hover:text-stone-900 hover:underline"
