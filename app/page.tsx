@@ -773,7 +773,6 @@ export default function OnedayWebPrototype() {
                 </div>
               </section>
             )}
-
             {view === "review" && (
               <section className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur md:p-6">
                 <div className="flex flex-col gap-4 border-b border-stone-200 pb-4 md:flex-row md:items-end md:justify-between">
