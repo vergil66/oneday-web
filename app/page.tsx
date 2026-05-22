@@ -168,6 +168,7 @@ export default function OnedayWebPrototype() {
   const [entries, setEntries] = useState<EntryMap>({});
   const [currentDate, setCurrentDate] = useState<string>(todayKey);
   const [view, setView] = useState<ViewMode>("today");
+  const [expandedWeeklyDay, setExpandedWeeklyDay] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [saveState, setSaveState] = useState<"saved" | "saving">("saved");
   const [isMounted, setIsMounted] = useState(false);
@@ -735,20 +736,104 @@ export default function OnedayWebPrototype() {
                 <div className="mt-7 grid gap-3">
                   {weekDates.map((d) => {
                     const e = entries[d];
+                    const isOpen = expandedWeeklyDay === d;
+                    
                     return (
                       <div
                         key={d}
                         className="rounded-3xl border border-stone-100 bg-stone-50/40 p-4 text-sm"
                       >
-                        <div className="font-medium">{longLabel(d)}</div>
-                        <div className="text-stone-600">
-                          {e ? "Day reflected" : "Quiet day"}
-                        </div>
+                        <button
+                          type="button"
+                          onClick={() => e && setExpandedWeeklyDay(isOpen ? null : d)}
+                          className="flex w-full items-center justify-between gap-4 text-left"
+                        >
+                          <div>
+                            <div className="font-medium">{longLabel(d)}</div>
+                            <div className="text-stone-600">
+                              {e ? "Entry kept" : "Quiet day"}
+                            </div>
+                          </div>
+                      
+                          {e && (
+                            <div className="rounded-2xl bg-white/80 px-3 py-2 text-xs text-stone-500">
+                              {isOpen ? "Close" : "Review"}
+                            </div>
+                          )}
+                        </button>
+                      
+                        {e && isOpen && (
+                          <div className="mt-4 grid gap-4 border-t border-stone-200 pt-4">
+                            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                              <SummaryCard
+                                label="Phrase"
+                                value={e.title || "No phrase recorded"}
+                              />
+                              <SummaryCard
+                                label="Location"
+                                value={e.location || "No location recorded"}
+                              />
+                              <SummaryCard
+                                label="Conditions"
+                                value={e.conditions || "No conditions recorded"}
+                              />
+                              <SummaryCard
+                                label="Place"
+                                value={e.place || "No place recorded"}
+                              />
+                            </div>
+                          
+                            <div className="grid gap-4 xl:grid-cols-3">
+                              <CloseLaneSummary
+                                title="KEEP"
+                                subtitle="What was held?"
+                                items={e.keep}
+                              />
+                              <CloseLaneSummary
+                                title="GROW"
+                                subtitle="What moved?"
+                                items={e.grow}
+                              />
+                              <CloseLaneSummary
+                                title="TEND"
+                                subtitle="What needed care?"
+                                items={e.tend}
+                              />
+                            </div>
+                          
+                            {(e.closeNotes || e.closeCarryForward) && (
+                              <div className="grid gap-4 md:grid-cols-2">
+                                {e.closeNotes && (
+                                  <div className="rounded-2xl border border-stone-200 bg-white/80 p-4">
+                                    <div className="text-xs uppercase tracking-[0.14em] text-stone-500">
+                                      Reflection
+                                    </div>
+                                    <div className="mt-2 whitespace-pre-wrap text-sm leading-7 text-stone-700">
+                                      {e.closeNotes}
+                                    </div>
+                                  </div>
+                                )}
+                              
+                                {e.closeCarryForward && (
+                                  <div className="rounded-2xl border border-stone-200 bg-white/80 p-4">
+                                    <div className="text-xs uppercase tracking-[0.14em] text-stone-500">
+                                      Carried forward
+                                    </div>
+                                    <div className="mt-2 whitespace-pre-wrap text-sm leading-7 text-stone-700">
+                                      {e.closeCarryForward}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
                 </div>
-              
+  
+  
                 <div className="mt-6 grid gap-6">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-stone-700">
