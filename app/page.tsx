@@ -398,7 +398,7 @@ export default function OnedayWebPrototype() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="grid gap-5 lg:grid-cols-[260px_1fr]"
+          className="grid gap-6 lg:grid-cols-[260px_1fr]"
         >
           <aside className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur lg:sticky lg:top-6 lg:h-fit">
             <div className="mb-4">
@@ -478,7 +478,7 @@ export default function OnedayWebPrototype() {
               </button>
             </div>
     
-            <div className="mt-5 rounded-2xl bg-stone-100 p-3 text-sm text-stone-600">
+            <div className="mt-7 rounded-2xl bg-stone-100 p-3 text-sm text-stone-600">
               <div className="font-medium text-stone-800">Current day</div>
               <div className="mt-1">{smallLabel(currentDate)}</div>
               <div className="mt-3 text-xs uppercase tracking-wide text-stone-500">
@@ -493,7 +493,7 @@ export default function OnedayWebPrototype() {
           <main>
             {view === "today" && (
               <section className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur md:p-6">
-                <div className="flex flex-col gap-4 border-b border-stone-200 pb-4 md:flex-row md:items-center md:justify-between">
+                <div className="flex flex-col gap-6 border-b border-stone-200 pb-4 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="text-xs uppercase tracking-[0.2em] text-stone-500">
                       Today page
@@ -531,7 +531,7 @@ export default function OnedayWebPrototype() {
                   </div>
                 </div>
 
-                <div className="mt-5 grid gap-4">
+                <div className="mt-7 grid gap-6">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-stone-700">
                       A phrase for this day
@@ -544,7 +544,7 @@ export default function OnedayWebPrototype() {
                     />
                   </div>
 
-                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                     <FieldCard
                       label="Location"
                       placeholder="Where are you?"
@@ -571,7 +571,7 @@ export default function OnedayWebPrototype() {
                     />
                   </div>
 
-                  <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+                  <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
                     <LaneCard
                       title="KEEP"
                       subtitle="What must be held today?"
@@ -611,7 +611,7 @@ export default function OnedayWebPrototype() {
                       value={currentEntry.notes}
                       onChange={(e) => patchCurrentEntry({ notes: e.target.value })}
                       placeholder="Anything else that belongs to this day?"
-                      className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                      className="min-h-[240px] w-full rounded-3xl border border-stone-200 bg-stone-50/40 px-4 py-4 text-base leading-7 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
                     />
                   </div>
                   </div>
@@ -634,7 +634,7 @@ export default function OnedayWebPrototype() {
 
             {view === "close" && (
               <section className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur md:p-6">
-                <div className="flex flex-col gap-4 border-b border-stone-200 pb-4 md:flex-row md:items-center md:justify-between">
+                <div className="flex flex-col gap-6 border-b border-stone-200 pb-4 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="text-xs uppercase tracking-[0.2em] text-stone-500">
                       Close day
@@ -657,15 +657,15 @@ export default function OnedayWebPrototype() {
                   </div>
                 </div>
               
-                <div className="mt-5 grid gap-6">
-                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-7 grid gap-6">
+                  <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                     <SummaryCard label="Phrase" value={currentEntry.title || "No phrase yet"} />
                     <SummaryCard label="Location" value={currentEntry.location || "No location yet"} />
                     <SummaryCard label="Conditions" value={currentEntry.conditions || "No conditions yet"} />
                     <SummaryCard label="Place" value={currentEntry.place || "No place yet"} />
                   </div>
               
-                  <div className="grid gap-4 xl:grid-cols-3">
+                  <div className="grid gap-6 xl:grid-cols-3">
                     <CloseLaneSummary
                       title="KEEP"
                       subtitle="What was held today?"
@@ -693,7 +693,7 @@ export default function OnedayWebPrototype() {
                         value={currentEntry.closeNotes}
                         onChange={(e) => patchCurrentEntry({ closeNotes: e.target.value })}
                         placeholder="Close the day in your own words."
-                        className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                        className="min-h-[240px] w-full rounded-3xl border border-stone-200 bg-stone-50/40 px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
                       />
                     </div>
               
@@ -732,7 +732,7 @@ export default function OnedayWebPrototype() {
                   </p>
                 </div>
               
-                <div className="mt-5 grid gap-3">
+                <div className="mt-7 grid gap-3">
                   {weekDates.map((d) => {
                     const e = entries[d];
                     return (
@@ -742,7 +742,7 @@ export default function OnedayWebPrototype() {
                       >
                         <div className="font-medium">{longLabel(d)}</div>
                         <div className="text-stone-600">
-                          {e ? `${itemCount(e)} items` : "No entry"}
+                          {e ? "Day reflected" : "Quiet day"}
                         </div>
                       </div>
                     );
@@ -758,7 +758,7 @@ export default function OnedayWebPrototype() {
                       value={weeklyEntry.notes}
                       onChange={(e) => patchWeekly({ notes: e.target.value })}
                       placeholder="What kind of week was this?"
-                      className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                      className="min-h-[240px] w-full rounded-3xl border border-stone-200 bg-stone-50/40 px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
                     />
                   </div>
               
@@ -775,7 +775,7 @@ export default function OnedayWebPrototype() {
             )}
             {view === "review" && (
               <section className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur md:p-6">
-                <div className="flex flex-col gap-4 border-b border-stone-200 pb-4 md:flex-row md:items-end md:justify-between">
+                <div className="flex flex-col gap-6 border-b border-stone-200 pb-4 md:flex-row md:items-end md:justify-between">
                   <div>
                     <div className="text-xs uppercase tracking-[0.2em] text-stone-500">
                       Review
@@ -797,7 +797,7 @@ export default function OnedayWebPrototype() {
                   </div>
                 </div>
 
-                <div className="mt-5 grid gap-3">
+                <div className="mt-7 grid gap-3">
                   {filteredEntries.length === 0 ? (
                     <div className="rounded-2xl bg-stone-100 p-5 text-sm text-stone-600">
                       No entries found yet.
@@ -849,7 +849,7 @@ export default function OnedayWebPrototype() {
                   </p>
                 </div>
 
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <div className="mt-7 grid gap-6 md:grid-cols-2">
                   <div className="rounded-2xl bg-stone-100 p-4">
                     <div className="text-base font-medium">Export</div>
                     <p className="mt-2 text-sm leading-6 text-stone-600">
