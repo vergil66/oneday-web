@@ -614,7 +614,7 @@ export default function OnedayWebPrototype() {
                       className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
                     />
                   </div>
-
+                  </div>
                   <div className="flex flex-wrap items-center justify-between gap-3 border-t border-stone-200 pt-4 text-sm text-stone-600">
                     <div>
                       Last updated {lastUpdatedLabel}
@@ -628,7 +628,6 @@ export default function OnedayWebPrototype() {
                     >
                       <Trash2 size={16} /> Delete entry
                     </button>
-                  </div>
                 </div>
               </section>
             )}
@@ -644,10 +643,10 @@ export default function OnedayWebPrototype() {
                       {longLabel(currentDate)}
                     </h2>
                     <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
-                      Revisit the day through what was kept, what moved, and what still needs care.
+                      Revisit the day, reflect in your own words, and carry forward only what still belongs.
                     </p>
                   </div>
-
+              
                   <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => setView("today")}
@@ -657,15 +656,15 @@ export default function OnedayWebPrototype() {
                     </button>
                   </div>
                 </div>
-
-                <div className="mt-5 grid gap-4">
+              
+                <div className="mt-5 grid gap-6">
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <SummaryCard label="Phrase" value={currentEntry.title || "No phrase yet"} />
                     <SummaryCard label="Location" value={currentEntry.location || "No location yet"} />
                     <SummaryCard label="Conditions" value={currentEntry.conditions || "No conditions yet"} />
                     <SummaryCard label="Place" value={currentEntry.place || "No place yet"} />
                   </div>
-
+              
                   <div className="grid gap-4 xl:grid-cols-3">
                     <CloseLaneSummary
                       title="KEEP"
@@ -683,51 +682,33 @@ export default function OnedayWebPrototype() {
                       items={currentEntry.tend}
                     />
                   </div>
-
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <ClosePromptCard
-                      label="What held today?"
-                      value={currentEntry.closeHeld}
-                      onChange={(value) => patchCurrentEntry({ closeHeld: value })}
-                    />
-                    <ClosePromptCard
-                      label="What moved, even a little?"
-                      value={currentEntry.closeMoved}
-                      onChange={(value) => patchCurrentEntry({ closeMoved: value })}
-                    />
-                    <ClosePromptCard
-                      label="What still needs care?"
-                      value={currentEntry.closeCare}
-                      onChange={(value) => patchCurrentEntry({ closeCare: value })}
-                    />
-                    <ClosePromptCard
-                      label="What surprised you?"
-                      value={currentEntry.closeSurprised}
-                      onChange={(value) => patchCurrentEntry({ closeSurprised: value })}
-                    />
-                  </div>
-
-                  <div className="grid gap-4 md:grid-cols-[1fr_1.2fr]">
-                    <ClosePromptCard
-                      label="What will you carry into tomorrow?"
-                      value={currentEntry.closeCarryForward}
-                      onChange={(value) => patchCurrentEntry({ closeCarryForward: value })}
-                      rows={5}
-                    />
-
+              
+                  <div className="grid gap-6">
                     <div>
                       <label className="mb-2 block text-sm font-medium text-stone-700">
-                        Closing note
+                        Reflection
                       </label>
+              
                       <textarea
                         value={currentEntry.closeNotes}
                         onChange={(e) => patchCurrentEntry({ closeNotes: e.target.value })}
                         placeholder="Close the day in your own words."
-                        className="min-h-[180px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                        className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                      />
+                    </div>
+              
+                    <div className="max-w-2xl">
+                      <ClosePromptCard
+                        label="What will you carry into tomorrow?"
+                        value={currentEntry.closeCarryForward}
+                        onChange={(value) =>
+                          patchCurrentEntry({ closeCarryForward: value })
+                        }
+                        rows={3}
                       />
                     </div>
                   </div>
-
+              
                   <div className="flex flex-wrap items-center justify-between gap-3 border-t border-stone-200 pt-4 text-sm text-stone-600">
                     <div>Last updated {lastUpdatedLabel}</div>
                     <div className="rounded-2xl bg-stone-100 px-3 py-2 text-stone-700">
@@ -737,7 +718,6 @@ export default function OnedayWebPrototype() {
                 </div>
               </section>
             )}
-
             {view === "weekly" && (
               <section className="rounded-3xl border border-stone-200 bg-white/95 p-4 shadow-sm backdrop-blur md:p-6">
                 <div className="border-b border-stone-200 pb-4">
