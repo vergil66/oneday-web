@@ -727,8 +727,11 @@ export default function OnedayWebPrototype() {
                   <h2 className="mt-2 text-2xl font-semibold">
                     Week of {longLabel(weekStart)}
                   </h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-600">
+                    Look back gently. Notice the shape of the week without needing to explain it all.
+                  </p>
                 </div>
-
+              
                 <div className="mt-5 grid gap-3">
                   {weekDates.map((d) => {
                     const e = entries[d];
@@ -745,46 +748,26 @@ export default function OnedayWebPrototype() {
                     );
                   })}
                 </div>
-
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                  <ClosePromptCard
-                    label="What held across the week?"
-                    value={weeklyEntry.held}
-                    onChange={(v) => patchWeekly({ held: v })}
-                  />
-                  <ClosePromptCard
-                    label="What grew across the week?"
-                    value={weeklyEntry.grew}
-                    onChange={(v) => patchWeekly({ grew: v })}
-                  />
-                  <ClosePromptCard
-                    label="What needed tending again and again?"
-                    value={weeklyEntry.tended}
-                    onChange={(v) => patchWeekly({ tended: v })}
-                  />
-                  <ClosePromptCard
-                    label="What surprised you this week?"
-                    value={weeklyEntry.surprised}
-                    onChange={(v) => patchWeekly({ surprised: v })}
-                  />
-                </div>
-
-                <div className="mt-4 grid gap-4 md:grid-cols-[1fr_1.2fr]">
-                  <ClosePromptCard
-                    label="What will you carry into next week?"
-                    value={weeklyEntry.carryForward}
-                    onChange={(v) => patchWeekly({ carryForward: v })}
-                    rows={5}
-                  />
-
+              
+                <div className="mt-6 grid gap-6">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-stone-700">
-                      Weekly note
+                      Weekly reflection
                     </label>
                     <textarea
                       value={weeklyEntry.notes}
                       onChange={(e) => patchWeekly({ notes: e.target.value })}
-                      className="min-h-[180px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 outline-none transition focus:border-stone-500"
+                      placeholder="What kind of week was this?"
+                      className="min-h-[220px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-4 text-base leading-7 text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+                    />
+                  </div>
+              
+                  <div className="max-w-2xl">
+                    <ClosePromptCard
+                      label="What will you carry into next week?"
+                      value={weeklyEntry.carryForward}
+                      onChange={(v) => patchWeekly({ carryForward: v })}
+                      rows={3}
                     />
                   </div>
                 </div>
