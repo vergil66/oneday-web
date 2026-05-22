@@ -738,7 +738,7 @@ export default function OnedayWebPrototype() {
                     return (
                       <div
                         key={d}
-                        className="rounded-2xl border border-stone-200 bg-stone-50/70 p-3 text-sm"
+                        className="rounded-3xl border border-stone-100 bg-stone-50/40 p-4 text-sm"
                       >
                         <div className="font-medium">{longLabel(d)}</div>
                         <div className="text-stone-600">
@@ -912,7 +912,7 @@ export default function OnedayWebPrototype() {
                   className="h-10 w-auto"
                 />
     
-                <div className="text-sm font-medium text-stone-700">
+                <div className="text-sm text-stone-600">
                   Powered by Vergil’s Coffee Table
                 </div>
     
@@ -920,8 +920,8 @@ export default function OnedayWebPrototype() {
                   A Framework for Intentional Learning
                 </div>
     
-                <div className="text-xs text-stone-400">
-                  Oneday v0.8 · Keep • Grow • Tend
+                <div className="text-[11px] text-stone-400">
+                  Oneday v0.8c · Keep • Grow • Tend
                 </div>
     
                 <a
